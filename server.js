@@ -26,7 +26,11 @@ app.post('/create-payment-intent', async (req, res) => {
   }
 });
 
-app.listen(4242, () => console.log('Stripe server running on port 4242'));
+// 🔥 Dinamik port kullanımı (Render için önemli!)
+const PORT = process.env.PORT || 4242;
+app.listen(PORT, () => console.log(`Stripe server running on port ${PORT}`));
+
+// ⏰ Cron job
 const cron = require('node-cron');
 const checkVIPStatus = require('./vipCheck');
 
